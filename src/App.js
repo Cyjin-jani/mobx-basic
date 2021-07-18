@@ -9,6 +9,7 @@ import autobind from 'autobind-decorator';
 import PersonContainer from './containers/PersonContainer';
 import TodoContainer from './containers/TodoContainer';
 import TodoFormContainer from './containers/TodoFormContainer';
+import UserListContainer from './containers/UserListContainer';
 // import autobind from 'autobind-decorator';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <PersonContainer />
         <TodoContainer />
         <TodoFormContainer />
+        <UserListContainer />
       </header>
     </div>
   );
