@@ -1,4 +1,4 @@
-import { observable, makeObservable, computed } from 'mobx';
+import { observable, makeObservable, computed, action } from 'mobx';
 
 export default class PersonStore {
   @observable
@@ -18,5 +18,11 @@ export default class PersonStore {
 
   plusAge() {
     this.age++;
+  }
+
+  @action
+  testAction() {
+    this.age = 45;
+    this.name = 'wwww';
   }
 }

@@ -69,38 +69,32 @@ import autobind from 'autobind-decorator';
 // class 형
 @inject('personStore')
 @observer
-class AppContainer extends React.Component {
+class App extends React.Component {
+  // static contextType = PersonContext;
+
   render() {
-    console.log('rendered container');
-    const { personStore } = this.props;
+    // const personStore = this.context;
+    const personStore = this.props.personStore;
 
-    return <App age10={personStore.age10} plus={this.plus} />;
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          {/* <p> 나이: {personStore.age} </p> */}
+          <p> 나이: {personStore.age10} </p>
+          <p>
+            <button onClick={this.click}>plus</button>
+          </p>
+        </header>
+      </div>
+    );
   }
-
   @autobind
-  plus() {
-    this.props.personStore.plusAge();
+  click() {
+    // const personStore = this.context;
+    const personStore = this.props.personStore;
+    personStore.plusAge();
   }
 }
 
-function App({ plus, age10 }) {
-  console.log('render');
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p> 나이: {age10} </p>
-        <p>
-          <button onClick={click}>plus</button>
-        </p>
-      </header>
-    </div>
-  );
-
-  function click() {
-    plus();
-  }
-}
-
-export default AppContainer;
+export default App;
