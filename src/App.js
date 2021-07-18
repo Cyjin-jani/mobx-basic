@@ -6,7 +6,26 @@ import React, { useContext } from 'react';
 import PersonContext from './contexts/PersonContext';
 import { action, computed, runInAction } from 'mobx';
 import autobind from 'autobind-decorator';
+import PersonContainer from './containers/PersonContainer';
+import TodoContainer from './containers/TodoContainer';
+import TodoFormContainer from './containers/TodoFormContainer';
 // import autobind from 'autobind-decorator';
+
+function App() {
+  console.log('render');
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <PersonContainer />
+        <TodoContainer />
+        <TodoFormContainer />
+      </header>
+    </div>
+  );
+}
+
+export default App;
 
 // // 함수형
 // function App({ personStore }) {
@@ -67,40 +86,40 @@ import autobind from 'autobind-decorator';
 // export default inject('personStore')(observer(App));
 
 // class 형
-@inject('personStore')
-@observer
-class AppContainer extends React.Component {
-  render() {
-    console.log('rendered container');
-    const { personStore } = this.props;
+// @inject('personStore')
+// @observer
+// class AppContainer extends React.Component {
+//   render() {
+//     console.log('rendered container');
+//     const { personStore } = this.props;
 
-    return <App age10={personStore.age10} plus={this.plus} />;
-  }
+//     return <App age10={personStore.age10} plus={this.plus} />;
+//   }
 
-  @autobind
-  plus() {
-    this.props.personStore.plusAge();
-  }
-}
+//   @autobind
+//   plus() {
+//     this.props.personStore.plusAge();
+//   }
+// }
 
-function App({ plus, age10 }) {
-  console.log('render');
+// function App({ plus, age10 }) {
+//   console.log('render');
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p> 나이: {age10} </p>
-        <p>
-          <button onClick={click}>plus</button>
-        </p>
-      </header>
-    </div>
-  );
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <img src={logo} className="App-logo" alt="logo" />
+//         <p> 나이: {age10} </p>
+//         <p>
+//           <button onClick={click}>plus</button>
+//         </p>
+//       </header>
+//     </div>
+//   );
 
-  function click() {
-    plus();
-  }
-}
+//   function click() {
+//     plus();
+//   }
+// }
 
-export default AppContainer;
+// export default AppContainer;

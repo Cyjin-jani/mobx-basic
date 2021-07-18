@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import PersonContext from './contexts/PersonContext';
 import PersonStore from './stores/PersonStore';
+import RootStore from './stores/RootStore';
 import { Provider } from 'mobx-react';
 
 // const isLogin = observable(true);
@@ -15,7 +16,7 @@ import { Provider } from 'mobx-react';
 //   age: 30,
 // });
 
-const personStore = new PersonStore();
+// const personStore = new PersonStore();
 
 // setInterval(() => {
 //   personStore.age++;
@@ -35,10 +36,13 @@ const personStore = new PersonStore();
 
 // personStore.age = 50;
 
+const rootStore = new RootStore();
+
 ReactDOM.render(
   <React.StrictMode>
     {/* <PersonContext.Provider value={personStore}> */}
-    <Provider personStore={personStore}>
+    {/* <Provider personStore={personStore}> */}
+    <Provider {...rootStore}>
       <App />
     </Provider>
     {/* </PersonContext.Provider> */}

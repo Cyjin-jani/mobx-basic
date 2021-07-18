@@ -12,12 +12,16 @@ export default class PersonStore {
     return Math.floor(this.age / 10) * 10;
   }
 
-  constructor() {
+  constructor(rootStore) {
     makeObservable(this);
+
+    this.rootStore = rootStore;
   }
 
+  @action
   plusAge() {
     this.age++;
+    this.rootStore.todoStore.todos = [];
   }
 
   @action
